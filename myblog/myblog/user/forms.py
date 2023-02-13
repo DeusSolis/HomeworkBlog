@@ -1,15 +1,48 @@
 """
 User application forms
 """
-from  django import forms
+from django.contrib.auth import get_user_model
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
-class SignInForm(forms.Form):
-    username = forms.CharField(label="Username", max_length=32)
-    password = forms.CharField(label="Password")
+User = get_user_model()
 
 
-class SignUpForm(forms.Form):
-    username = forms.CharField(label="Username", max_length=32)
-    email = forms.EmailField(label="Email")
-    password = forms.CharField(label="Password")
-    confirm_password = forms.CharField(label="Confirm_password")
+class SignInForm(AuthenticationForm):
+    username = forms.CharField(max_length=32, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'id': 'username',
+        'placeholder': 'Username',
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'id': "password",
+        'placeholder': "Password",
+    }))
+
+
+class SignUpForm(UserCreationForm):
+    username = forms.CharField(label="Username", max_length=32, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'id': 'username',
+        'placeholder': 'Username',
+    }))
+    email = forms.EmailField(label="Email", widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'id': 'email',
+        'placeholder': 'Enter E-Mail'
+    }))
+    password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'id': "password",
+        'placeholder': "Password",
+    }))
+    confirm_password = forms.CharField(label="Confirm_password", widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'id': "password",
+        'placeholder': "Confirm_password",
+    }))
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password', 'confirm_password')
