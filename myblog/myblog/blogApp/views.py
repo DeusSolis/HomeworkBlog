@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, Http404
-from blogApp.models import CategoryModel, PostModel
+from .models import CategoryModel, PostModel
 
 
 def post_list_view(request: HttpRequest) -> HttpResponse:
