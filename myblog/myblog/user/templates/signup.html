@@ -8,12 +8,12 @@
   <form method="post">
 
     {% csrf_token %}
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
     {% for fil in form %}
     <div class="form-floating">
       {{ fil }}
-      <label for="{{ fil.id }}" > {{fil.label}} </label>
+      <label for="{{ fil.id_for_label }}" > {{fil.label}} </label>
     </div>
     {% endfor %}
 

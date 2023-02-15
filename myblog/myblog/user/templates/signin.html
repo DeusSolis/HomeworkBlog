@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %}SignIn{% endblock title %}
 
 {% block content %}
 <main class="form-auth form-signin w-100 m-auto">
   <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
   <form method="post">
-    {%  csrf_token %}
+    {% csrf_token %}
 
     {% for fil in form %}
     <div class="form-floating">
       {{ fil }}
-      <label for="{{ fil.id }}">{{ fil.label}}</label>
+      <label for="{{ fil.id_for_label  }}">{{ fil.label}}</label>
     </div>
     {% endfor %}
 
