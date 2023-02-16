@@ -16,8 +16,8 @@ def signin_view(request: HttpRequest):
             redirect_url = reverse_lazy("list")
 
             return HttpResponseRedirect(redirect_url)
-
-    form = SignInForm()
+    else:
+        form = SignInForm()
     return render(request, 'signin.html', {'form': form})
 
 
@@ -31,7 +31,8 @@ def signup_view(request: HttpRequest):
 
             return HttpResponseRedirect(redirect_url)
 
-    form = SignUpForm()
+    else:
+        form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
 
