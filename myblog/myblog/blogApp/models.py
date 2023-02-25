@@ -16,7 +16,7 @@ class CategoryModel(models.Model):
 
 
 class PostModel(models.Model):
-    title = models.CharField(max_length=64)
+    name = models.CharField(max_length=64)
     content = models.TextField()
     slug = models.SlugField(max_length=64, blank=True, unique=True, editable=False)
     created_at = models.DateTimeField(auto_now_add=True, db_column="created")
@@ -29,5 +29,5 @@ class PostModel(models.Model):
         verbose_name_plural = 'posts'
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.name)
         super().save(*args, **kwargs)

@@ -11,4 +11,4 @@ class CategoryModelAdmin(admin.ModelAdmin):
 @admin.register(PostModel)
 class PostModelAdmin(admin.ModelAdmin):
     "Class for registration BlogpostModel model"
-    list_display = ["pk", "title", "category", "created_at", "updated_at"]
+    list_display = ["pk", "name", "category", "created_at", "updated_at"]
