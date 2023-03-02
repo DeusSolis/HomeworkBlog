@@ -2,6 +2,8 @@ from django.db import models
 
 from django.utils.text import slugify
 
+from user.models import UserModel
+
 
 class CategoryModel(models.Model):
     title = models.CharField(max_length=64)
@@ -22,6 +24,7 @@ class PostModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, db_column="created")
     updated_at = models.DateTimeField(auto_now=True, db_column="updated")
     category = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
+    owner = models.ForeignKey(UserModel, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'post'
