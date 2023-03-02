@@ -12,7 +12,10 @@ class CategoryModelSerializer(serializers.ModelSerializer):
 class PostModelSerializer(serializers.ModelSerializer):
     updated_at = serializers.DateTimeField(read_only=True)
     created_at = serializers.DateTimeField(read_only=True)
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = PostModel
-        fields = ('id', 'name', 'category', 'content', 'created_at', 'updated_at')
+        fields = ('id', 'name', 'category', 'content', 'created_at', 'updated_at', 'owner')
+
+
